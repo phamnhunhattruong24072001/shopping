@@ -23,9 +23,19 @@ export default defineConfig({
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
-            '@': __dirname + '/resources/js/src',
-            '*': __dirname + '/resources/js/public',
-            '~': __dirname + 'node_modules/'
+            '@': '/resources/js/src',
+            '*': '/resources/js/public',
+            '~': '/node_modules'
         },
+    },
+    server: {
+        hmr: {
+           host: 'localhost',
+        },
+        host: true,
+        port: 3000,
+        watch: {
+            usePolling: true
+        }
     },
 });
