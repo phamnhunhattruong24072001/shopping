@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Laravel</title>
     @vite('resources/css/app.css')
+    @vite('resources/sass/app.scss')
 </head>
 <body>
     <main id="app">
-        <app></app>
+        <app/>
     </main>
     @vite('resources/js/app.js')
 </body>
