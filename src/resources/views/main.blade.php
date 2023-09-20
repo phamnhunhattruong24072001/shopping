@@ -16,7 +16,7 @@
 </head>
 <body>
     <main id="app">
-        <app/>
+        <app-template />
     </main>
     @vite('resources/js/app.js')
 </body>

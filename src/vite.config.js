@@ -23,7 +23,7 @@ export default defineConfig({
         }),
         Components({
             dirs: [
-                'resources/js/src/components',
+                'resources/js/src/components/',
             ],
             extensions: ['vue'],
         })

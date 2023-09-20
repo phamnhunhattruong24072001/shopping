@@ -1,16 +1,19 @@
-import { createRouter, createWebHistory } from "vue-router"
+import {createRouter, createWebHistory} from "vue-router"
+import adminRoutes from "./admin"
+import clientRoutes from "./client"
 
 const routes = [
-    {
-       path: "/",
-       name: "Home",
-       component: () => import("@/views/Client/ShopHome.vue")
-    }
+  ...clientRoutes,
+  ...adminRoutes,
+  {
+    path: "/:pathMatch(.*)*",
+    component: () => import("@/views/NotFound/404.vue")
+  },
 ]
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes
+  history: createWebHistory(),
+  routes,
 })
 
 export default router

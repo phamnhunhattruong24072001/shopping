@@ -1,5 +1,5 @@
 import "./bootstrap";
-import { createApp } from "vue";
+import {createApp} from "vue";
 import axios from "axios";
 import VueAxios from "vue-axios";
 import App from "./App.vue"
@@ -7,7 +7,7 @@ import router from "@/router"
 
 const app = createApp({})
 
-app.component("App", App)
+app.component("AppTemplate", App)
 
 app.use(VueAxios, axios)
 
