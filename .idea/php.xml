@@ -126,6 +126,10 @@
       <path value="$PROJECT_DIR$/src/vendor/nunomaduro/collision" />
       <path value="$PROJECT_DIR$/src/vendor/graham-campbell/result-type" />
       <path value="$PROJECT_DIR$/src/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/src/vendor/tymon/jwt-auth" />
+      <path value="$PROJECT_DIR$/src/vendor/lcobucci/jwt" />
+      <path value="$PROJECT_DIR$/src/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/src/vendor/stella-maris/clock" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
