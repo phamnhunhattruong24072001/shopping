@@ -18,6 +18,6 @@
     <main id="app">
         <app-template />
     </main>
-    @vite('resources/js/app.js')
+    @vite('resources/js/app.ts')
 </body>
 </html>
