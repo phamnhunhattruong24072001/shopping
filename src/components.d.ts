@@ -29,6 +29,8 @@ declare module 'vue' {
     PagesDropdown: typeof import('./resources/js/src/components/Dropdowns/PagesDropdown.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShButton: typeof import('./resources/js/src/components/Atoms/ShButton.vue')['default']
+    ShInput: typeof import('./resources/js/src/components/Atoms/ShInput.vue')['default']
     TableDropdown: typeof import('./resources/js/src/components/Dropdowns/TableDropdown.vue')['default']
     UserDropdown: typeof import('./resources/js/src/components/Dropdowns/UserDropdown.vue')['default']
   }

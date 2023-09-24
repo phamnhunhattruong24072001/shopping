@@ -1,14 +1,12 @@
-export default {
-  setUser(state, user) {
-    state.user = user;
+import { MutationTree } from 'vuex'
+import { State } from './state';
+
+export type Mutations<S = State> = {
+  SET_DATA(state: S, payload: []): void;
+}
+
+export const mutations: MutationTree<State> = {
+  SET_DATA(state: State, user) {
+    state.user = user
   },
-  setLoggingIn(state, isLoggingIn) {
-    state.isLoggingIn = isLoggingIn;
-  },
-  setLoggingError(state, error) {
-    state.loginError = error;
-  },
-  setRegisterError(state, error) {
-    state.registerError = error;
-  }
 }

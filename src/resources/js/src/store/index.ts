@@ -1,10 +1,17 @@
-import { InjectionKey } from 'vue'
-import { createStore, Store } from 'vuex'
-import auth from './modules/auth';
+import { createStore } from 'vuex'
+import { store as auth, AuthStore, State as AuthState } from '@/store/modules/auth'
 
-const store = createStore({
+export type RootState = {
+  auth: AuthState
+};
+
+export type Store = AuthStore<Pick<RootState, 'auth'>>
+export const store = createStore({
   modules: {
-    auth,
-  }
-});
-export default store;
+    auth
+  },
+})
+
+export function useStore(): Store {
+  return store as Store
+}

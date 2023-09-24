@@ -1,3 +1,27 @@
+<script setup lang="ts">
+import { computed, onMounted, reactive } from "vue";
+import github from "@/assets/img/github.svg"
+import google from "@/assets/img/google.svg"
+import { useStore } from "vuex"
+import { authKey } from "@/store/modules/auth";
+
+const authStore = useStore(authKey)
+
+console.log(authStore)
+const form = reactive({
+  email: '',
+  password: '',
+})
+
+onMounted(() => {
+  console.log(1)
+})
+
+function submitFormLogin() {
+  console.log(form, "log submit form")
+}
+</script>
+
 <template>
   <div class="container mx-auto px-4 h-full">
     <div class="flex content-center items-center justify-center h-full">
@@ -12,20 +36,24 @@
               </h6>
             </div>
             <div class="btn-wrapper text-center">
-              <button
+              <ShButton
                 class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                 type="button"
               >
-                <img alt="..." class="w-5 mr-1" :src="github"/>
+                <template v-slot:icon>
+                  <img alt="..." class="w-5 mr-1" :src="github"/>
+                </template>
                 Github
-              </button>
-              <button
+              </ShButton>
+              <ShButton
                 class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                 type="button"
               >
-                <img alt="..." class="w-5 mr-1" :src="google"/>
+                <template v-slot:icon>
+                  <img alt="..." class="w-5 mr-1" :src="google"/>
+                </template>
                 Google
-              </button>
+              </ShButton>
             </div>
             <hr class="mt-6 border-b-1 border-blueGray-300"/>
           </div>
@@ -33,7 +61,7 @@
             <div class="text-blueGray-400 text-center mb-3 font-bold">
               <small>Or sign in with credentials</small>
             </div>
-            <form>
+            <form @submit.prevent="submitFormLogin">
               <div class="relative w-full mb-3">
                 <label
                   class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
@@ -41,10 +69,11 @@
                 >
                   Email
                 </label>
-                <input
+                <ShInput
                   type="email"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
+                  v-model="form.email"
                 />
               </div>
 
@@ -55,19 +84,21 @@
                 >
                   Password
                 </label>
-                <input
+                <ShInput
                   type="password"
                   class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
+                  v-model="form.password"
                 />
               </div>
               <div>
                 <label class="inline-flex items-center cursor-pointer">
-                  <input
+                  <ShInput
                     id="customCheckLogin"
                     type="checkbox"
                     class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                   />
+
                   <span class="ml-2 text-sm font-semibold text-blueGray-600">
                     Remember me
                   </span>
@@ -75,12 +106,12 @@
               </div>
 
               <div class="text-center mt-6">
-                <button
-                  class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                  type="button"
+                <ShButton
+                  type="submit"
+                  classes="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                 >
                   Sign In
-                </button>
+                </ShButton>
               </div>
             </form>
           </div>
@@ -92,7 +123,7 @@
             </a>
           </div>
           <div class="w-1/2 text-right">
-            <router-link to="/auth/register" class="text-blueGray-200">
+            <router-link to="/admin/register" class="text-blueGray-200">
               <small>Create new account</small>
             </router-link>
           </div>
@@ -101,16 +132,3 @@
     </div>
   </div>
 </template>
-<script>
-import github from "@/assets/img/github.svg";
-import google from "@/assets/img/google.svg";
-
-export default {
-  data() {
-    return {
-      github,
-      google,
-    };
-  },
-};
-</script>

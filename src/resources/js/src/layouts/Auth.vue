@@ -6,8 +6,9 @@
           class="absolute top-0 w-full h-full bg-blueGray-800 bg-no-repeat bg-full"
           :style="`background-image: url('${registerBg2}');`"
         ></div>
-        <router-view/>
+        <RouterView />
         <footer-small absolute/>
+        <FooterSmall absolute />
       </section>
     </main>
   </div>

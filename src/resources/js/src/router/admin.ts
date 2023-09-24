@@ -1,5 +1,5 @@
-import Admin from "../layouts/Admin.vue";
-import Auth from "../layouts/Auth.vue";
+import Admin from "@/layouts/Admin.vue";
+import Auth from "@/layouts/Auth.vue";
 
 export default [
   {

@@ -1,5 +1,5 @@
 <template>
-  <client-header/>
-  <router-view/>
-  <client-footer/>
+  <ClientHeader />
+  <RouterView />
+  <ClientFooter />
 </template>

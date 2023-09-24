@@ -1,6 +1,9 @@
-const state = {
+export type State = {
+  user: Object,
+  isLoginIn: Boolean
+}
+
+export const state: State = {
   user: {},
-  isLoggingIn: false,
-  loginError: null,
-  registerError: null,
+  isLoginIn: false
 }

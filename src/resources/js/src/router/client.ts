@@ -1,4 +1,4 @@
-import Client from "../layouts/Client.vue";
+import Client from "@/layouts/Client.vue";
 export default [
   {
     path: "/",

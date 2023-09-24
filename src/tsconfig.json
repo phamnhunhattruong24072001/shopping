@@ -13,7 +13,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "lib": [
-      "esnext",
+      "es2015",
       "dom",
       "dom.iterable",
       "scripthost"
@@ -36,6 +36,7 @@
     }
   },
   "include": [
+    "/resources/js/*.ts",
     "/resources/js/src/**/*.ts",
     "/resources/js/src/views/**/*.vue",
     "/resources/js/src/components/**/*.vue"
