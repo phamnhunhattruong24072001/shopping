@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive } from "vue";
+import {computed, onMounted, reactive} from "vue"
 import github from "@/assets/img/github.svg"
 import google from "@/assets/img/google.svg"
-import { useStore } from "vuex"
-import { authKey } from "@/store/modules/auth";
+import {useStore} from "vuex";
+import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/types"
 
-const authStore = useStore(authKey)
+const authStore = useStore()
+console.log(authStore.state.auth)
 
-console.log(authStore)
 const form = reactive({
   email: '',
   password: '',
 })
 
 onMounted(() => {
-  console.log(1)
+
 })
 
 function submitFormLogin() {
-  console.log(form, "log submit form")
+  authStore.dispatch(AuthActionTypes.LOGIN_ADMIN, form)
 }
 </script>
 

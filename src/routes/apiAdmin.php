@@ -10,6 +10,7 @@ Route::fallback(function () {
   ], 404);
 });
 
-Route::group(['middleware' => ['auth:api'], 'prefix' => 'admin', 'except' => ['login', 'register']], function () {
-    Route::post('/login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'login']);
+
+Route::group(['middleware' => ['auth:api']], function () {
 });

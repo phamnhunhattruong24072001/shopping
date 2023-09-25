@@ -33,11 +33,11 @@ instance.interceptors.request.use(
 )
 
 instance.interceptors.response.use(
-  function(response) {
+  function (response) {
     return response.data;
   },
-  function(error) {
-    console.log(error);
+  function (error) {
+    return Promise.reject(error.response.data)
   }
 )
 export default instance;

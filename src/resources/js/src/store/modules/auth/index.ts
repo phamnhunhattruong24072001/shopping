@@ -2,18 +2,17 @@ import {
   Store as VuexStore,
   DispatchOptions,
   CommitOptions,
-  Module, Store,
-} from 'vuex';
+  Module,
+} from 'vuex'
 
-import {state} from './state';
-import type {State} from './state';
-import {actions, Actions} from './actions';
-import {getters, Getters} from './getters';
-import {mutations, Mutations} from './mutations';
-import { InjectionKey } from "vue";
-import { RootState } from '@/store';
+import {state} from './state'
+import type {State} from './state'
+import {actions, Actions} from './actions'
+import {getters, Getters} from './getters'
+import {mutations, Mutations} from './mutations'
+import {RootState} from '@/store'
 
-export {State};
+export {State}
 
 export type AuthStore<S = State> = Omit<VuexStore<S>, 'getters' | 'commit' | 'dispatch'> & {
   commit<K extends keyof Mutations, P extends Parameters<Mutations[K]>[1]>(
@@ -26,14 +25,12 @@ export type AuthStore<S = State> = Omit<VuexStore<S>, 'getters' | 'commit' | 'di
     key: K,
     payload: Parameters<Actions[K]>[1],
     options?: DispatchOptions
-  ): ReturnType<Actions[K]>;
+  ): ReturnType<Actions[K]>
 } & {
   getters: {
     [K in keyof Getters]: ReturnType<Getters[K]>
   };
 };
-
-export const authKey: InjectionKey<Store<State>> = Symbol('auth')
 
 export const store: Module<State, RootState> = {
   state,
