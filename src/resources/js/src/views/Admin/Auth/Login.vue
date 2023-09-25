@@ -4,22 +4,21 @@ import github from "@/assets/img/github.svg"
 import google from "@/assets/img/google.svg"
 import {useStore} from "vuex";
 import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/types"
+import {useForm} from 'vee-validate';
+import * as yup from 'yup';
+
+const { handleSubmit } = useForm({
+  validationSchema: yup.object({
+    email: yup.string().required().email(),
+    password: yup.string().required().min(6),
+  }),
+});
 
 const authStore = useStore()
-console.log(authStore.state.auth)
 
-const form = reactive({
-  email: '',
-  password: '',
+const submitFormLogin = handleSubmit((values) => {
+  authStore.dispatch(AuthActionTypes.LOGIN_ADMIN, values)
 })
-
-onMounted(() => {
-
-})
-
-function submitFormLogin() {
-  authStore.dispatch(AuthActionTypes.LOGIN_ADMIN, form)
-}
 </script>
 
 <template>
@@ -71,9 +70,9 @@ function submitFormLogin() {
                 </label>
                 <ShInput
                   type="email"
-                  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  name="email"
+                  classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
-                  v-model="form.email"
                 />
               </div>
 
@@ -86,9 +85,9 @@ function submitFormLogin() {
                 </label>
                 <ShInput
                   type="password"
-                  class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  name="password"
+                  classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
-                  v-model="form.password"
                 />
               </div>
               <div>
@@ -96,7 +95,8 @@ function submitFormLogin() {
                   <ShInput
                     id="customCheckLogin"
                     type="checkbox"
-                    class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                    name="customCheckLogin"
+                    classes="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
                   />
 
                   <span class="ml-2 text-sm font-semibold text-blueGray-600">

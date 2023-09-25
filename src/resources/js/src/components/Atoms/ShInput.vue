@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {PropType} from "vue"
+import {useField} from 'vee-validate';
 
 type InputTypes =
   | "text"
@@ -25,7 +26,7 @@ type InputTypes =
   | "reset"
   | undefined
 
-defineProps({
+const props = defineProps({
   type: {
     type: String as PropType<InputTypes>,
     required: false,
@@ -71,6 +72,8 @@ defineProps({
     required: false,
   }
 })
+
+const {value, errorMessage} = useField(() => props.name)
 </script>
 
 <template>
@@ -82,7 +85,13 @@ defineProps({
     :readonly="readonly"
     :placeholder="placeholder"
     :disabled="disabled" :ref="ref"
-    :value="modelValue"
-    @input="$emit('update:modelValue', ($event?.target as HTMLInputElement).value)"
+    v-model="value"
   />
+  <span class="is-invalid">{{ errorMessage }}</span>
 </template>
+
+<style>
+ .is-invalid {
+   color: red;
+ }
+</style>

@@ -1,2 +1,3 @@
 - doc example vuex - type script
 - https://codesandbox.io/s/using-vuex-4-modules-in-vue-3-with-typescript-7ygvy?file=/src/store/index.ts:969-976
+- vue validate :https://vee-validate.logaretm.com/v4/guide/composition-api/custom-inputs/
