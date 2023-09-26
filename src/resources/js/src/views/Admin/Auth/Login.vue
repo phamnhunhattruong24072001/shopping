@@ -6,15 +6,11 @@ import {useStore} from "vuex";
 import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/types"
 import {useForm} from 'vee-validate';
 import * as yup from 'yup';
+import {AuthFormAdmin} from "@/@types";
 
 const authStore = useStore()
 
-interface MyForm {
-  email: string | null;
-  password: string | null;
-}
-
-const { handleSubmit } = useForm<MyForm>({
+const { handleSubmit } = useForm<AuthFormAdmin>({
   validationSchema: yup.object({
     email: yup.string().required('Email is required').email(),
     password: yup.string().required('Password is required').min(8).max(12),
