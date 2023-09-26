@@ -13,6 +13,6 @@ export enum AuthActionDispatchTypes {
 }
 
 export enum AuthMutationTypes {
-  SET_USER = 'SET_USER',
-  SET_LOGIN = 'SET_LOGIN',
+  SET_USER_ADMIN = 'SET_USER_ADMIN',
+  SET_IS_LOGIN_ADMIN = 'SET_IS_LOGIN_ADMIN',
 }

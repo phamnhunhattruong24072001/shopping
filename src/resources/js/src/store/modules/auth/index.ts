@@ -32,7 +32,7 @@ export type AuthStore<S = State> = Omit<VuexStore<S>, 'getters' | 'commit' | 'di
   };
 };
 
-export const store: Module<State, RootState> = {
+export const store: Module<State, RootState> & AuthStore = {
   state,
   actions,
   getters,

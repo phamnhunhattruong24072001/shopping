@@ -70,6 +70,11 @@ const props = defineProps({
   modelValue: {
     type: String,
     required: false,
+  },
+  autocomplete: {
+    type: String,
+    required: false,
+    default: 'off'
   }
 })
 
@@ -79,19 +84,20 @@ const {value, errorMessage} = useField(() => props.name)
 <template>
   <input
     :id="id"
-    :class="classes"
+    :class="{ [classes] : true, 'is-valid': errorMessage }"
     :type="type"
     :name="name"
     :readonly="readonly"
     :placeholder="placeholder"
     :disabled="disabled" :ref="ref"
+    :autocomplete="autocomplete"
     v-model="value"
   />
-  <span class="is-invalid">{{ errorMessage }}</span>
+  <span class="text-red-500 pt-0.5 text-sm">{{ errorMessage }}</span>
 </template>
 
 <style>
- .is-invalid {
-   color: red;
- }
+.is-valid {
+  border: 2px solid red;
+}
 </style>

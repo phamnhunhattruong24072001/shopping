@@ -16,7 +16,7 @@
       <!-- Brand -->
       <router-link
         class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-        to="/admin"
+        :to="{ name: 'admin.dashboard' }"
       >
         Shop Admin
       </router-link>
@@ -42,7 +42,7 @@
             <div class="w-6/12">
               <router-link
                 class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
-                to="/admin"
+                :to="{ name: 'admin.dashboard' }"
               >
                 Shop Admin
               </router-link>
@@ -82,7 +82,7 @@
         <ul class="md:flex-col md:min-w-full flex flex-col list-none">
           <li class="items-center">
             <router-link
-              to="/admin"
+              :to="{ name: 'admin.dashboard' }"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -96,7 +96,7 @@
                 ]"
               >
                 <i
-                  class="fas fa-tv mr-2 text-sm"
+                  class="fas fa-tools mr-2 text-sm"
                   :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
                 ></i>
                 Dashboard
@@ -106,7 +106,7 @@
 
           <li class="items-center">
             <router-link
-              to="/admin/setting"
+              :to="{ name: 'admin.setting' }"
               v-slot="{ href, navigate, isActive }"
             >
               <a
@@ -143,7 +143,7 @@
           <li class="items-center">
             <router-link
               class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-              to="/admin/login"
+              :to="{ name: 'admin.login' }"
             >
               <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
               Login
@@ -153,7 +153,7 @@
           <li class="items-center">
             <router-link
               class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-              to="/admin/register"
+              :to="{ name: 'admin.register' }"
             >
               <i
                 class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"

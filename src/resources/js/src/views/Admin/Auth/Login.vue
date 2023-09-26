@@ -7,14 +7,19 @@ import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/t
 import {useForm} from 'vee-validate';
 import * as yup from 'yup';
 
-const { handleSubmit } = useForm({
+const authStore = useStore()
+
+interface MyForm {
+  email: string | null;
+  password: string | null;
+}
+
+const { handleSubmit } = useForm<MyForm>({
   validationSchema: yup.object({
-    email: yup.string().required().email(),
-    password: yup.string().required().min(6),
+    email: yup.string().required('Email is required').email(),
+    password: yup.string().required('Password is required').min(8).max(12),
   }),
 });
-
-const authStore = useStore()
 
 const submitFormLogin = handleSubmit((values) => {
   authStore.dispatch(AuthActionTypes.LOGIN_ADMIN, values)
@@ -88,6 +93,7 @@ const submitFormLogin = handleSubmit((values) => {
                   name="password"
                   classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
+                  autocomplete="on"
                 />
               </div>
               <div>
@@ -123,7 +129,7 @@ const submitFormLogin = handleSubmit((values) => {
             </a>
           </div>
           <div class="w-1/2 text-right">
-            <router-link to="/admin/register" class="text-blueGray-200">
+            <router-link :to="{ name: 'admin.register' }" class="text-blueGray-200">
               <small>Create new account</small>
             </router-link>
           </div>

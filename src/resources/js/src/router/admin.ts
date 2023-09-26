@@ -4,15 +4,22 @@ import Auth from "@/layouts/Auth.vue";
 export default [
   {
     path: "/admin",
-    redirect: "/admin",
+    name: "admin",
+    redirect: "/admin/dashboard",
     component: Admin,
+    meta: {
+      requiresAuth: true
+    },
     children: [
       {
-        path: "/admin",
+        path: "/admin/dashboard",
+        alias: "/admin",
+        name: "admin.dashboard",
         component: () => import("@/views/Admin/Dashboard/Dashboard.vue")
       },
       {
         path: "/admin/setting",
+        name: "admin.setting",
         component: () => import("@/views/Admin/Settings/Setting.vue")
       },
     ]
@@ -24,10 +31,12 @@ export default [
     children: [
       {
         path: "/admin/login",
+        name: "admin.login",
         component: () => import("@/views/Admin/Auth/Login.vue")
       },
       {
         path: "/admin/register",
+        name: "admin.register",
         component: () => import("@/views/Admin/Auth/Register.vue")
       },
     ]

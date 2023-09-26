@@ -1,9 +1,9 @@
 export type State = {
-  user: Object,
-  isLoginIn: Boolean
+  adminUser: Object,
+  isLoginInAdmin: Boolean
 }
 
 export const state: State = {
-  user: {},
-  isLoginIn: false
+  adminUser: {},
+  isLoginInAdmin: false
 }

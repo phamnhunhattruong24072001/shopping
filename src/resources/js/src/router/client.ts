@@ -7,6 +7,7 @@ export default [
     children: [
       {
         path: "/",
+        name: "client.home",
         component: () => import("@/views/Client/ShopHome.vue")
       }
     ]

@@ -1,3 +1,6 @@
+<script setup lang="ts">
+import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+</script>
 <template>
   <!-- Navbar -->
   <nav
@@ -32,19 +35,9 @@
       </form>
       <!-- User -->
       <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-        <user-dropdown />
+        <UserDropdown/>
       </ul>
     </div>
   </nav>
   <!-- End Navbar -->
 </template>
-
-<script>
-import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
-
-export default {
-  components: {
-    UserDropdown,
-  },
-};
-</script>
