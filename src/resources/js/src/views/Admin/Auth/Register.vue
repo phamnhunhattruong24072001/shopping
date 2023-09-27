@@ -28,7 +28,8 @@ const submitFormRegister = handleSubmit((values) => {
         <div
           class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
         >
-          <div class="bg-red-400 p-4 text-center text-gray-50" v-if="stateAuth.isRegisterAdminError">Đăng ký thất bại</div>
+          <div class="bg-red-400 p-4 text-center text-gray-50" v-show="stateAuth.isRegisterAdminError">{{ stateAuth.authMessage }}</div>
+          <div class="bg-green-400 p-4 text-center text-gray-50" v-show="stateAuth.isRegisterInAdmin">{{ stateAuth.authMessage }}</div>
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
               <h6 class="text-blueGray-500 text-sm font-bold">

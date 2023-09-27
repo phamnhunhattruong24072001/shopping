@@ -5,7 +5,7 @@ import {AuthActionTypes} from "./types"
 import {loginAdmin, registerAdmin} from "@/api/auth.service"
 import {AuthMutationTypes} from "./types"
 import {Mutations} from "./mutations"
-import router from '@/router';
+import router from '@/router'
 
 type AugmentedActionContext = {
   commit<K extends keyof Mutations>(
@@ -28,18 +28,27 @@ export const actions: ActionTree<State, RootState> & Actions = {
       await router.push({ name: 'admin.dashboard' })
     } catch (error) {
       console.log(error)
+      commit(AuthMutationTypes.SET_LOGIN_ADMIN_ERROR, true)
+      setTimeout(() => {
+        commit(AuthMutationTypes.SET_LOGIN_ADMIN_ERROR, false)
+      }, 3000)
     }
   },
   async [AuthActionTypes.REGISTER_ADMIN]({commit}, formData: string[]): Promise<void> {
     try {
       const data: any = await registerAdmin(formData)
-      alert(data.message)
-      await router.push({ name: 'admin.login' })
+      commit(AuthMutationTypes.SET_MESSAGE, data.message)
+      commit(AuthMutationTypes.SET_IS_REGISTER_ADMIN, true)
+      setTimeout(async () => {
+        commit(AuthMutationTypes.SET_IS_REGISTER_ADMIN, false)
+        await router.push({ name: 'admin.login' })
+      }, 2000)
     } catch (error) {
+      commit(AuthMutationTypes.SET_MESSAGE, error.message)
       commit(AuthMutationTypes.SET_REGISTER_ADMIN_ERROR, true)
       setTimeout(() => {
         commit(AuthMutationTypes.SET_REGISTER_ADMIN_ERROR, false)
-      }, 2000)
+      }, 3000)
     }
   },
   async [AuthActionTypes.LOGOUT_ADMIN]({commit}): Promise<void> {
