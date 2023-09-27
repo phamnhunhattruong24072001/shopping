@@ -1,24 +1,18 @@
 <script setup lang="ts">
-import {computed, onMounted, reactive} from "vue"
 import github from "@/assets/img/github.svg"
 import google from "@/assets/img/google.svg"
 import {useStore} from "vuex";
 import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/types"
 import {useForm} from 'vee-validate';
-import * as yup from 'yup';
-import {AuthFormAdmin} from "@/@types";
+import {AuthFormLoginAdmin} from "@/@types";
+import {schemaLoginAdmin} from "@/validations"
 
-const authStore = useStore()
+const store = useStore()
 
-const { handleSubmit } = useForm<AuthFormAdmin>({
-  validationSchema: yup.object({
-    email: yup.string().required('Email is required').email(),
-    password: yup.string().required('Password is required').min(8).max(12),
-  }),
-});
+const {handleSubmit} = useForm<AuthFormLoginAdmin>(schemaLoginAdmin)
 
 const submitFormLogin = handleSubmit((values) => {
-  authStore.dispatch(AuthActionTypes.LOGIN_ADMIN, values)
+  store.dispatch(AuthActionTypes.LOGIN_ADMIN, values)
 })
 </script>
 
@@ -63,33 +57,23 @@ const submitFormLogin = handleSubmit((values) => {
             </div>
             <form @submit.prevent="submitFormLogin">
               <div class="relative w-full mb-3">
-                <label
-                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  Email
-                </label>
                 <ShInput
                   type="email"
                   name="email"
                   classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
+                  label="Email"
                 />
               </div>
 
               <div class="relative w-full mb-3">
-                <label
-                  class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                  htmlFor="grid-password"
-                >
-                  Password
-                </label>
                 <ShInput
                   type="password"
                   name="password"
                   classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
                   autocomplete="on"
+                  label="Password"
                 />
               </div>
               <div>

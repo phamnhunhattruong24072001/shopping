@@ -2,7 +2,7 @@ import {ActionContext, ActionTree} from 'vuex'
 import {State} from './state'
 import {RootState} from '@/store'
 import {AuthActionTypes} from "./types"
-import {loginAdmin} from "@/api/auth.service"
+import {loginAdmin, registerAdmin} from "@/api/auth.service"
 import {AuthMutationTypes} from "./types"
 import {Mutations} from "./mutations"
 import router from '@/router';
@@ -19,9 +19,9 @@ export interface Actions {
 }
 
 export const actions: ActionTree<State, RootState> & Actions = {
-  async [AuthActionTypes.LOGIN_ADMIN]({commit}, formData: object) {
+  async [AuthActionTypes.LOGIN_ADMIN]({commit}, formData: string[]): Promise<void> {
     try {
-      const data = await loginAdmin(formData)
+      const data: any = await loginAdmin(formData)
       commit(AuthMutationTypes.SET_USER_ADMIN, data.user)
       commit(AuthMutationTypes.SET_IS_LOGIN_ADMIN, true)
       localStorage.setItem('admin_access_token', data.token)
@@ -30,11 +30,22 @@ export const actions: ActionTree<State, RootState> & Actions = {
       console.log(error)
     }
   },
-  [AuthActionTypes.LOGOUT_ADMIN]({commit}) {
+  async [AuthActionTypes.REGISTER_ADMIN]({commit}, formData: string[]): Promise<void> {
+    try {
+      const data: any = await registerAdmin(formData)
+      alert(data.message)
+      await router.push({ name: 'admin.login' })
+    } catch (error) {
+      commit(AuthMutationTypes.SET_REGISTER_ADMIN_ERROR, true)
+      setTimeout(() => {
+        commit(AuthMutationTypes.SET_REGISTER_ADMIN_ERROR, false)
+      }, 2000)
+    }
+  },
+  async [AuthActionTypes.LOGOUT_ADMIN]({commit}): Promise<void> {
     commit(AuthMutationTypes.SET_USER_ADMIN, {})
     commit(AuthMutationTypes.SET_IS_LOGIN_ADMIN, false)
-    localStorage.removeItem('admin_access_token')
-    localStorage.removeItem('admin')
-    router.push({ name: 'admin.login' })
+    localStorage.removeItem('admin_access_token', 'admin')
+    await router.push({ name: 'admin.login' })
   }
 }

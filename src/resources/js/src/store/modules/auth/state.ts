@@ -1,9 +1,11 @@
 export type State = {
   adminUser: Object,
-  isLoginInAdmin: Boolean
+  isLoginInAdmin: boolean,
+  isRegisterAdminError: boolean,
 }
 
 export const state: State = {
   adminUser: {},
-  isLoginInAdmin: false
+  isLoginInAdmin: false,
+  isRegisterAdminError: false,
 }

@@ -5,6 +5,7 @@ import {AuthMutationTypes} from "./types"
 export type Mutations<S = State> = {
   [AuthMutationTypes.SET_USER_ADMIN](state: S, payload: string[]): void
   [AuthMutationTypes.SET_IS_LOGIN_ADMIN](state: S, payload: boolean): boolean
+  [AuthMutationTypes.SET_REGISTER_ADMIN_ERROR](state: S, payload: boolean): boolean
 }
 
 export const mutations: MutationTree<State> = {
@@ -14,5 +15,8 @@ export const mutations: MutationTree<State> = {
   },
   [AuthMutationTypes.SET_IS_LOGIN_ADMIN](state: State, payload) {
     state.isLoginInAdmin = payload
+  },
+  [AuthMutationTypes.SET_REGISTER_ADMIN_ERROR](state: State, payload) {
+    state.isRegisterAdminError = payload
   },
 }

@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import category from "@/lib/Category"
+import category from "@/libs/category"
 
-const { getAllCategory, categories } = category()
+const {getAllCategory, categories} = category()
 
 getAllCategory()
 
-console.log(categories)
 </script>
 
 <template>

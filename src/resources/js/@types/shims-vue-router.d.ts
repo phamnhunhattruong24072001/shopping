@@ -6,6 +6,7 @@ declare module 'vue-router' {
   interface RouteMeta {
     isPublic?: boolean
     isError?: boolean,
-    requiresAuth: boolean
+    requiresAuth?: boolean,
+    title?: string,
   }
 }

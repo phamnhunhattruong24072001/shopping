@@ -15,4 +15,5 @@ export enum AuthActionDispatchTypes {
 export enum AuthMutationTypes {
   SET_USER_ADMIN = 'SET_USER_ADMIN',
   SET_IS_LOGIN_ADMIN = 'SET_IS_LOGIN_ADMIN',
+  SET_REGISTER_ADMIN_ERROR = 'SET_REGISTER_ADMIN_ERROR',
 }

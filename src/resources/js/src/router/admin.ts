@@ -8,18 +8,24 @@ export default [
     redirect: "/admin/dashboard",
     component: Admin,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
     },
     children: [
       {
         path: "/admin/dashboard",
         alias: "/admin",
         name: "admin.dashboard",
+        meta: {
+          title: 'Dashboard'
+        },
         component: () => import("@/views/Admin/Dashboard/Dashboard.vue")
       },
       {
         path: "/admin/setting",
         name: "admin.setting",
+        meta: {
+          title: 'Settings'
+        },
         component: () => import("@/views/Admin/Settings/Setting.vue")
       },
     ]

@@ -75,6 +75,15 @@ const props = defineProps({
     type: String,
     required: false,
     default: 'off'
+  },
+  label: {
+    type: String,
+    required: false,
+  },
+  class_label: {
+    type: String,
+    required: false,
+    default: 'block uppercase text-blueGray-600 text-xs font-bold mb-2'
   }
 })
 
@@ -82,6 +91,11 @@ const {value, errorMessage} = useField(() => props.name)
 </script>
 
 <template>
+  <label v-show="label"
+    :class="class_label"
+  >
+    {{ label }}
+  </label>
   <input
     :id="id"
     :class="{ [classes] : true, 'is-valid': errorMessage }"
@@ -96,7 +110,7 @@ const {value, errorMessage} = useField(() => props.name)
   <span class="text-red-500 pt-0.5 text-sm">{{ errorMessage }}</span>
 </template>
 
-<style>
+<style scoped>
 .is-valid {
   border: 2px solid red;
 }
