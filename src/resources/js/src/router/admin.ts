@@ -16,19 +16,27 @@ export default [
         alias: "/admin",
         name: "admin.dashboard",
         meta: {
-          title: 'Dashboard'
+          title: "Dashboard",
         },
-        component: () => import("@/views/Admin/Dashboard/Dashboard.vue")
+        component: () => import("@/views/admin/dashboard/Dashboard.vue"),
       },
       {
         path: "/admin/setting",
         name: "admin.setting",
         meta: {
-          title: 'Settings'
+          title: "Settings",
         },
-        component: () => import("@/views/Admin/Settings/Setting.vue")
+        component: () => import("@/views/admin/settings/Setting.vue"),
       },
-    ]
+      {
+        path: "/admin/category",
+        name: "admin.category",
+        meta: {
+          title: "Categories",
+        },
+        component: () => import("@/views/admin/categories/ListCategory.vue"),
+      },
+    ],
   },
   {
     path: "/admin",
@@ -38,13 +46,13 @@ export default [
       {
         path: "/admin/login",
         name: "admin.login",
-        component: () => import("@/views/Admin/Auth/Login.vue")
+        component: () => import("@/views/admin/auth/Login.vue"),
       },
       {
         path: "/admin/register",
         name: "admin.register",
-        component: () => import("@/views/Admin/Auth/Register.vue")
+        component: () => import("@/views/admin/auth/Register.vue"),
       },
-    ]
-  }
-]
+    ],
+  },
+];

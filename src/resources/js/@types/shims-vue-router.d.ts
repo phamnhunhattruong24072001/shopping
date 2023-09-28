@@ -1,12 +1,10 @@
-import 'vue-router'
+import "vue-router";
 
-export {}
+export {};
 
-declare module 'vue-router' {
+declare module "vue-router" {
   interface RouteMeta {
-    isPublic?: boolean
-    isError?: boolean,
-    requiresAuth?: boolean,
-    title?: string,
+    requiresAuth?: boolean;
+    title?: string;
   }
 }

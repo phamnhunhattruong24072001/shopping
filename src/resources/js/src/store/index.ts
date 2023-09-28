@@ -1,18 +1,22 @@
-import {createStore} from 'vuex'
-import {store as auth, AuthStore, State as AuthState} from '@/store/modules/auth'
-import {useStore as baseUseStore} from "vuex";
+import { createStore } from "vuex";
+import {
+  store as auth,
+  AuthStore,
+  State as AuthState,
+} from "@/store/modules/auth";
+import { useStore as baseUseStore } from "vuex";
 
 export type RootState = {
-  auth: AuthState
+  auth: AuthState;
 };
 
-export type Store = AuthStore<Pick<RootState, 'auth'>>
+export type Store = AuthStore<Pick<RootState, "auth">>;
 export const store = createStore({
   modules: {
-    auth
+    auth,
   },
-})
+});
 
 export function customStore(namespaced: string): Store {
-  return baseUseStore()
+  return baseUseStore();
 }

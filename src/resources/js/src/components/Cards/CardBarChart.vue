@@ -8,9 +8,7 @@
           <h6 class="uppercase text-blueGray-400 mb-1 text-xs font-semibold">
             Performance
           </h6>
-          <h2 class="text-blueGray-700 text-xl font-semibold">
-            Total orders
-          </h2>
+          <h2 class="text-blueGray-700 text-xl font-semibold">Total orders</h2>
         </div>
       </div>
     </div>
@@ -22,7 +20,7 @@
   </div>
 </template>
 <script>
-import { Chart } from 'chart.js'
+import { Chart } from "chart.js";
 export default {
   mounted: function () {
     this.$nextTick(function () {

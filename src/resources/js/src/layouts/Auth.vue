@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import registerBg2 from "@/assets/img/register_bg_2.png";
+</script>
+
 <template>
   <div>
     <main>
@@ -7,19 +11,8 @@
           :style="`background-image: url('${registerBg2}');`"
         ></div>
         <RouterView />
-        <footer-small absolute/>
         <FooterSmall absolute />
       </section>
     </main>
   </div>
 </template>
-<script>
-import registerBg2 from "@/assets/img/register_bg_2.png";
-export default {
-  data() {
-    return {
-      registerBg2,
-    };
-  },
-};
-</script>

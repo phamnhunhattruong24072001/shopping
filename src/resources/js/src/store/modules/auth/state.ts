@@ -1,10 +1,10 @@
-export type State = {
-  adminUser: Object,
-  isLoginInAdmin: boolean,
-  isRegisterInAdmin: boolean,
-  isRegisterAdminError: boolean,
-  isLoginAdminError: boolean,
-  authMessage: string,
+export interface State {
+  adminUser: Object;
+  isLoginInAdmin: boolean;
+  isRegisterInAdmin: boolean;
+  isRegisterAdminError: boolean;
+  isLoginAdminError: boolean;
+  authMessage: string;
 }
 
 export const state: State = {
@@ -13,5 +13,5 @@ export const state: State = {
   isRegisterInAdmin: false,
   isRegisterAdminError: false,
   isLoginAdminError: false,
-  authMessage: '',
-}
+  authMessage: "",
+};

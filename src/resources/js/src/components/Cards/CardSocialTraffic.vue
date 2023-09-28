@@ -63,7 +63,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
                   >
                     <div
-                      style="width: 60%;"
+                      style="width: 60%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
                     ></div>
                   </div>
@@ -92,7 +92,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-emerald-200"
                   >
                     <div
-                      style="width: 70%;"
+                      style="width: 70%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
                     ></div>
                   </div>
@@ -121,7 +121,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-purple-200"
                   >
                     <div
-                      style="width: 80%;"
+                      style="width: 80%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-purple-500"
                     ></div>
                   </div>
@@ -150,7 +150,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-sky-200"
                   >
                     <div
-                      style="width: 75%;"
+                      style="width: 75%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-sky-500"
                     ></div>
                   </div>
@@ -179,7 +179,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-orange-200"
                   >
                     <div
-                      style="width: 30%;"
+                      style="width: 30%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
                     ></div>
                   </div>

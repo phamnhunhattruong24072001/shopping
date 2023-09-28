@@ -1,9 +1,9 @@
-import axiosService from "@/utils/axios"
+import axiosService from "@/utils/axios";
 
 export const loginAdmin = async (params: object): Promise<any> => {
-  return await axiosService.post('/admin/login', params)
-}
+  return await axiosService.post("/admin/login", params);
+};
 
 export const registerAdmin = async (params: object): Promise<any> => {
-  return await axiosService.post('/admin/register', params)
-}
+  return await axiosService.post("/admin/register", params);
+};

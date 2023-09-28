@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {PropType} from "vue"
-import {useField} from 'vee-validate';
+import { PropType } from "vue";
+import { useField } from "vee-validate";
 
 type InputTypes =
   | "text"
@@ -24,20 +24,40 @@ type InputTypes =
   | "button"
   | "submit"
   | "reset"
-  | undefined
+  | undefined;
 
 const props = defineProps({
   type: {
     type: String as PropType<InputTypes>,
     required: false,
-    default: 'text',
+    default: "text",
     validator: (value: string) => {
       const _inputTypes = [
-        "text", "password", "number", "email", "tel", "url", "search", "date", "time", "datetime-local", "month", "week", "color", "range", "file", "checkbox", "radio", "submit", "reset", "button", "hidden"
+        "text",
+        "password",
+        "number",
+        "email",
+        "tel",
+        "url",
+        "search",
+        "date",
+        "time",
+        "datetime-local",
+        "month",
+        "week",
+        "color",
+        "range",
+        "file",
+        "checkbox",
+        "radio",
+        "submit",
+        "reset",
+        "button",
+        "hidden",
       ];
 
-      return _inputTypes.includes(value)
-    }
+      return _inputTypes.includes(value);
+    },
   },
   id: {
     type: String,
@@ -74,7 +94,7 @@ const props = defineProps({
   autocomplete: {
     type: String,
     required: false,
-    default: 'off'
+    default: "off",
   },
   label: {
     type: String,
@@ -83,27 +103,33 @@ const props = defineProps({
   class_label: {
     type: String,
     required: false,
-    default: 'block uppercase text-blueGray-600 text-xs font-bold mb-2'
-  }
-})
+    default: "block uppercase text-blueGray-600 text-xs font-bold mb-2",
+  },
+  validate: {
+    type: Boolean,
+    required: false,
+    default: true,
+  },
+});
 
-const {value, errorMessage} = useField(() => props.name)
+const { value, errorMessage } = useField(() =>
+  props.validate ? props.name : "",
+);
 </script>
 
 <template>
-  <label v-show="label"
-    :class="class_label"
-  >
+  <label v-show="label" :class="class_label">
     {{ label }}
   </label>
   <input
     :id="id"
-    :class="{ [classes] : true, 'is-valid': errorMessage }"
+    :class="{ [classes]: true, 'is-valid': errorMessage }"
     :type="type"
     :name="name"
     :readonly="readonly"
     :placeholder="placeholder"
-    :disabled="disabled" :ref="ref"
+    :disabled="disabled"
+    :ref="ref"
     :autocomplete="autocomplete"
     v-model="value"
   />

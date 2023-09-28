@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import {computed} from "vue"
-import github from "@/assets/img/github.svg"
-import google from "@/assets/img/google.svg"
-import {useStore} from "vuex"
-import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/types"
-import {schemaRegisterAdmin} from "@/validations"
-import {useForm} from "vee-validate"
-import {AuthFormRegisterAdmin} from "@/@types"
+import { computed } from "vue";
+import github from "@/assets/img/github.svg";
+import google from "@/assets/img/google.svg";
+import { useStore } from "vuex";
+import { AuthActionDispatchTypes as AuthActionTypes } from "@/store/modules/auth/types";
+import { schemaRegisterAdmin } from "@/validations";
+import { useForm } from "vee-validate";
+import { AuthFormRegisterAdmin } from "@/@types";
 
-const store = useStore()
+const store = useStore();
 
-const {handleSubmit} = useForm<AuthFormRegisterAdmin>(schemaRegisterAdmin)
+const { handleSubmit } = useForm<AuthFormRegisterAdmin>(schemaRegisterAdmin);
 
 const stateAuth = computed(() => {
-  return store.state.auth
-})
+  return store.state.auth;
+});
 
 const submitFormRegister = handleSubmit((values) => {
-  store.dispatch(AuthActionTypes.REGISTER_ADMIN, values)
-})
+  store.dispatch(AuthActionTypes.REGISTER_ADMIN, values);
+});
 </script>
 
 <template>
@@ -28,13 +28,21 @@ const submitFormRegister = handleSubmit((values) => {
         <div
           class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
         >
-          <div class="bg-red-400 p-4 text-center text-gray-50" v-show="stateAuth.isRegisterAdminError">{{ stateAuth.authMessage }}</div>
-          <div class="bg-green-400 p-4 text-center text-gray-50" v-show="stateAuth.isRegisterInAdmin">{{ stateAuth.authMessage }}</div>
+          <div
+            class="bg-red-400 p-4 text-center text-gray-50"
+            v-show="stateAuth.isRegisterAdminError"
+          >
+            {{ stateAuth.authMessage }}
+          </div>
+          <div
+            class="bg-green-400 p-4 text-center text-gray-50"
+            v-show="stateAuth.isRegisterInAdmin"
+          >
+            {{ stateAuth.authMessage }}
+          </div>
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
-              <h6 class="text-blueGray-500 text-sm font-bold">
-                Sign up with
-              </h6>
+              <h6 class="text-blueGray-500 text-sm font-bold">Sign up with</h6>
             </div>
             <div class="btn-wrapper text-center">
               <ShButton
@@ -42,7 +50,7 @@ const submitFormRegister = handleSubmit((values) => {
                 type="button"
               >
                 <template v-slot:icon>
-                  <img alt="..." class="w-5 mr-1" :src="github"/>
+                  <img alt="..." class="w-5 mr-1" :src="github" />
                 </template>
                 Github
               </ShButton>
@@ -51,12 +59,12 @@ const submitFormRegister = handleSubmit((values) => {
                 type="button"
               >
                 <template v-slot:icon>
-                  <img alt="..." class="w-5 mr-1" :src="google"/>
+                  <img alt="..." class="w-5 mr-1" :src="google" />
                 </template>
                 Google
               </ShButton>
             </div>
-            <hr class="mt-6 border-b-1 border-blueGray-300"/>
+            <hr class="mt-6 border-b-1 border-blueGray-300" />
           </div>
           <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
             <div class="text-blueGray-400 text-center mb-3 font-bold">
@@ -141,8 +149,18 @@ const submitFormRegister = handleSubmit((values) => {
             </form>
           </div>
         </div>
+        <div class="flex flex-wrap mt-6 relative">
+          <div class="w-1/2"></div>
+          <div class="w-1/2 text-right">
+            <router-link
+              :to="{ name: 'admin.login' }"
+              class="text-blueGray-200"
+            >
+              <small>Login now</small>
+            </router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-

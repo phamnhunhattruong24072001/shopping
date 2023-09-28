@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import {computed} from "vue"
+import { computed } from "vue";
 import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
 import ShInput from "@/components/Atoms/ShInput.vue";
 
-const route = useRoute()
+const route = useRoute();
 
 const getTitlePage = computed(() => {
-  return route.meta.title
-})
+  return route.meta.title;
+});
 </script>
 
 <template>
@@ -39,13 +39,14 @@ const getTitlePage = computed(() => {
           <ShInput
             type="text"
             placeholder="Search here..."
+            :validate="false"
             classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-sm shadow outline-none focus:outline-none focus:ring w-full pl-10"
           />
         </div>
       </form>
       <!-- User -->
       <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-        <UserDropdown/>
+        <UserDropdown />
       </ul>
     </div>
   </nav>

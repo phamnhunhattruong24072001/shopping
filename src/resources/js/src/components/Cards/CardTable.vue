@@ -145,7 +145,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
                   >
                     <div
-                      style="width: 60%;"
+                      style="width: 60%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
                     ></div>
                   </div>
@@ -223,7 +223,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-emerald-200"
                   >
                     <div
-                      style="width: 100%;"
+                      style="width: 100%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
                     ></div>
                   </div>
@@ -300,7 +300,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-red-200"
                   >
                     <div
-                      style="width: 73%;"
+                      style="width: 73%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
                     ></div>
                   </div>
@@ -377,7 +377,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-teal-200"
                   >
                     <div
-                      style="width: 90%;"
+                      style="width: 90%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-teal-500"
                     ></div>
                   </div>
@@ -455,7 +455,7 @@
                     class="overflow-hidden h-2 text-xs flex rounded bg-emerald-200"
                   >
                     <div
-                      style="width: 100%;"
+                      style="width: 100%"
                       class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-emerald-500"
                     ></div>
                   </div>

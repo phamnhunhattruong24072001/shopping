@@ -8,8 +8,8 @@ export default [
       {
         path: "/",
         name: "client.home",
-        component: () => import("@/views/Client/ShopHome.vue")
-      }
-    ]
-  }
-]
+        component: () => import("@/views/client/ShopHome.vue"),
+      },
+    ],
+  },
+];

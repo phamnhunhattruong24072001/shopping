@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue"
-import UserDropdown from "@/components/Dropdowns/UserDropdown.vue"
-import {ref} from "vue"
+import NotificationDropdown from "@/components/Dropdowns/NotificationDropdown.vue";
+import UserDropdown from "@/components/Dropdowns/UserDropdown.vue";
+import { ref } from "vue";
 
-const collapseShow = ref<string>("hidden")
+const collapseShow = ref<string>("hidden");
 function toggleCollapseShow(classes: string) {
-  collapseShow.value = classes
+  collapseShow.value = classes;
 }
 </script>
 
@@ -34,10 +34,10 @@ function toggleCollapseShow(classes: string) {
       <!-- User -->
       <ul class="md:hidden items-center flex flex-wrap list-none">
         <li class="inline-block relative">
-          <notification-dropdown/>
+          <notification-dropdown />
         </li>
         <li class="inline-block relative">
-          <user-dropdown/>
+          <user-dropdown />
         </li>
       </ul>
       <!-- Collapse -->
@@ -81,7 +81,7 @@ function toggleCollapseShow(classes: string) {
         </form>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full"/>
+        <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
         <h6
           class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
@@ -141,7 +141,7 @@ function toggleCollapseShow(classes: string) {
         </ul>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full"/>
+        <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
         <h6
           class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
@@ -153,29 +153,31 @@ function toggleCollapseShow(classes: string) {
         <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
           <li class="items-center">
             <router-link
-              class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-              :to="{ name: 'admin.login' }"
+              :to="{ name: 'admin.category' }"
+              v-slot="{ href, navigate, isActive }"
             >
-              <i class="fas fa-fingerprint text-blueGray-300 mr-2 text-sm"></i>
-              Login
-            </router-link>
-          </li>
-
-          <li class="items-center">
-            <router-link
-              class="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
-              :to="{ name: 'admin.register' }"
-            >
-              <i
-                class="fas fa-clipboard-list text-blueGray-300 mr-2 text-sm"
-              ></i>
-              Register
+              <a
+                :href="href"
+                @click="navigate"
+                class="text-xs uppercase py-3 font-bold block"
+                :class="[
+                  isActive
+                    ? 'text-emerald-500 hover:text-emerald-600'
+                    : 'text-blueGray-700 hover:text-blueGray-500',
+                ]"
+              >
+                <i
+                  class="fas fa-tools mr-2 text-sm"
+                  :class="[isActive ? 'opacity-75' : 'text-blueGray-300']"
+                ></i>
+                Category
+              </a>
             </router-link>
           </li>
         </ul>
 
         <!-- Divider -->
-        <hr class="my-4 md:min-w-full"/>
+        <hr class="my-4 md:min-w-full" />
         <!-- Heading -->
         <h6
           class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"

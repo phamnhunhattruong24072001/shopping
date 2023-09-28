@@ -1,24 +1,24 @@
 <script setup lang="ts">
-import github from "@/assets/img/github.svg"
-import google from "@/assets/img/google.svg"
-import {useStore} from "vuex";
-import {AuthActionDispatchTypes as AuthActionTypes} from "@/store/modules/auth/types"
-import {useForm} from 'vee-validate'
-import {AuthFormLoginAdmin} from "@/@types"
-import {schemaLoginAdmin} from "@/validations"
-import {computed} from "vue"
+import github from "@/assets/img/github.svg";
+import google from "@/assets/img/google.svg";
+import { useStore } from "vuex";
+import { AuthActionDispatchTypes as AuthActionTypes } from "@/store/modules/auth/types";
+import { useForm } from "vee-validate";
+import { AuthFormLoginAdmin } from "@/@types";
+import { schemaLoginAdmin } from "@/validations";
+import { computed } from "vue";
 
-const store = useStore()
+const store = useStore();
 
-const {handleSubmit} = useForm<AuthFormLoginAdmin>(schemaLoginAdmin)
+const { handleSubmit } = useForm<AuthFormLoginAdmin>(schemaLoginAdmin);
 
 const stateAuth = computed(() => {
-  return store.state.auth
-})
+  return store.state.auth;
+});
 
 const submitFormLogin = handleSubmit((values) => {
-  store.dispatch(AuthActionTypes.LOGIN_ADMIN, values)
-})
+  store.dispatch(AuthActionTypes.LOGIN_ADMIN, values);
+});
 </script>
 
 <template>
@@ -28,12 +28,15 @@ const submitFormLogin = handleSubmit((values) => {
         <div
           class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0"
         >
-          <div class="bg-red-400 p-4 text-center text-gray-50" v-show="stateAuth.isLoginAdminError">Login failed</div>
+          <div
+            class="bg-red-400 p-4 text-center text-gray-50"
+            v-show="stateAuth.isLoginAdminError"
+          >
+            {{ stateAuth.authMessage }}
+          </div>
           <div class="rounded-t mb-0 px-6 py-6">
             <div class="text-center mb-3">
-              <h6 class="text-blueGray-500 text-sm font-bold">
-                Sign in with
-              </h6>
+              <h6 class="text-blueGray-500 text-sm font-bold">Sign in with</h6>
             </div>
             <div class="btn-wrapper text-center">
               <ShButton
@@ -41,7 +44,7 @@ const submitFormLogin = handleSubmit((values) => {
                 type="button"
               >
                 <template v-slot:icon>
-                  <img alt="..." class="w-5 mr-1" :src="github"/>
+                  <img alt="..." class="w-5 mr-1" :src="github" />
                 </template>
                 Github
               </ShButton>
@@ -50,12 +53,12 @@ const submitFormLogin = handleSubmit((values) => {
                 type="button"
               >
                 <template v-slot:icon>
-                  <img alt="..." class="w-5 mr-1" :src="google"/>
+                  <img alt="..." class="w-5 mr-1" :src="google" />
                 </template>
                 Google
               </ShButton>
             </div>
-            <hr class="mt-6 border-b-1 border-blueGray-300"/>
+            <hr class="mt-6 border-b-1 border-blueGray-300" />
           </div>
           <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
             <div class="text-blueGray-400 text-center mb-3 font-bold">
@@ -115,7 +118,10 @@ const submitFormLogin = handleSubmit((values) => {
             </a>
           </div>
           <div class="w-1/2 text-right">
-            <router-link :to="{ name: 'admin.register' }" class="text-blueGray-200">
+            <router-link
+              :to="{ name: 'admin.register' }"
+              class="text-blueGray-200"
+            >
               <small>Create new account</small>
             </router-link>
           </div>
