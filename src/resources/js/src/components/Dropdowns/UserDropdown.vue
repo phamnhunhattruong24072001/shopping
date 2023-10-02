@@ -1,10 +1,38 @@
+<script setup lang="ts">
+import { createPopper } from "@popperjs/core";
+import { ref } from "vue";
+import { useStore } from "vuex";
+import { AuthActionDispatchTypes as AuthActionTypes } from "@/store/modules/auth/types";
+import image from "@/assets/img/team-1-800x800.jpg";
+
+const store = useStore();
+const dropdownPopoverShow = ref<boolean>(false);
+const popoverDropdownRef = ref<HTMLElement | null>(null);
+const btnDropdownRef = ref<HTMLElement | null>(null);
+
+const handleLogout = () => {
+  store.dispatch(AuthActionTypes.LOGOUT_ADMIN);
+};
+const toggleDropdown = (e) => {
+  e.preventDefault();
+  if (dropdownPopoverShow.value) {
+    dropdownPopoverShow.value = false;
+  } else {
+    dropdownPopoverShow.value = true;
+    createPopper(btnDropdownRef.value, popoverDropdownRef.value, {
+      placement: "bottom-start",
+    });
+  }
+};
+</script>
+
 <template>
   <div>
     <a
       class="text-blueGray-500 block"
       href="#pablo"
       ref="btnDropdownRef"
-      v-on:click="toggleDropdown($event)"
+      @click="toggleDropdown($event)"
     >
       <div class="items-center flex">
         <span
@@ -21,7 +49,7 @@
     <div
       ref="popoverDropdownRef"
       class="bg-white text-base z-50 float-left py-2 list-none text-left rounded shadow-lg min-w-48"
-      v-bind:class="{
+      :class="{
         hidden: !dropdownPopoverShow,
         block: dropdownPopoverShow,
       }"
@@ -45,40 +73,12 @@
         Something else here
       </a>
       <div class="h-0 my-2 border border-solid border-blueGray-100" />
-      <a
-        href="javascript:void(0);"
-        class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+      <span
+        @click="handleLogout"
+        class="cursor-pointer text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Seprated link
-      </a>
+        Logout
+      </span>
     </div>
   </div>
 </template>
-
-<script>
-import { createPopper } from "@popperjs/core";
-
-import image from "@/assets/img/team-1-800x800.jpg";
-
-export default {
-  data() {
-    return {
-      dropdownPopoverShow: false,
-      image: image,
-    };
-  },
-  methods: {
-    toggleDropdown: function (event) {
-      event.preventDefault();
-      if (this.dropdownPopoverShow) {
-        this.dropdownPopoverShow = false;
-      } else {
-        this.dropdownPopoverShow = true;
-        createPopper(this.$refs.btnDropdownRef, this.$refs.popoverDropdownRef, {
-          placement: "bottom-start",
-        });
-      }
-    },
-  },
-};
-</script>

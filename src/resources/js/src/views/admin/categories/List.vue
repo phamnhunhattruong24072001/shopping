@@ -1,0 +1,3 @@
+<template>
+  <CardTable></CardTable>
+</template>

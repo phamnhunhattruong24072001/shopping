@@ -23,7 +23,6 @@
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
               >
                 Username
               </label>
@@ -38,7 +37,6 @@
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
               >
                 Email address
               </label>
@@ -53,7 +51,6 @@
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
               >
                 First Name
               </label>
@@ -68,7 +65,6 @@
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
               >
                 Last Name
               </label>

@@ -153,7 +153,7 @@ function toggleCollapseShow(classes: string) {
         <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
           <li class="items-center">
             <router-link
-              :to="{ name: 'admin.category' }"
+              :to="{ name: 'category' }"
               v-slot="{ href, navigate, isActive }"
             >
               <a
