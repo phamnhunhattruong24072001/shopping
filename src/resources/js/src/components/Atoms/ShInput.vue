@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PropType } from "vue";
+import { PropType, computed } from "vue";
 import { useField } from "vee-validate";
 
 type InputTypes =
@@ -107,18 +107,21 @@ const props = defineProps({
   },
   validate: {
     type: Boolean,
-    required: false,
     default: true,
   },
   sh_value: {
     type: String,
     required: false,
-  }
+  },
 });
 
 const { value, errorMessage } = useField(() =>
   props.validate ? props.name : "",
 );
+
+if (props.sh_value) {
+  value.value = props.sh_value;
+}
 </script>
 
 <template>
@@ -135,7 +138,6 @@ const { value, errorMessage } = useField(() =>
     :disabled="disabled"
     :ref="ref"
     :autocomplete="autocomplete"
-    :value="sh_value"
     v-model="value"
   />
   <span class="text-red-500 pt-0.5 text-sm">{{ errorMessage }}</span>

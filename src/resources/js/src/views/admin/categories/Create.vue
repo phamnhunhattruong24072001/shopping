@@ -1,3 +1,35 @@
+<script setup lang="ts">
+import {ref} from "vue"
+import { useForm } from "vee-validate";
+import { schemaCategory } from "@/validations";
+import { CategoryForm } from "@/@types";
+import ShInput from "@/components/Atoms/ShInput.vue";
+import ShButton from "@/components/Atoms/ShButton.vue";
+import ShTextarea from "@/components/Atoms/ShTextarea.vue";
+import ShSelect from "@/components/Atoms/ShSelect.vue";
+
+const { handleSubmit } = useForm<CategoryForm>(schemaCategory);
+
+const parent_ids = ref([
+  {
+    name: "Điện thoại",
+    slug: "dien-thoai",
+  },
+  {
+    name: "Laptop",
+    slug: "laptop",
+  },
+  {
+    name: "Tablet",
+    slug: "tablet",
+  },
+])
+
+const submitForm = handleSubmit((values) => {
+  console.log(values);
+});
+</script>
+
 <template>
   <div
     class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
@@ -14,155 +46,75 @@
       </div>
     </div>
     <div class="flex-auto px-4 lg:px-10 py-10 pt-5">
-      <form>
+      <form @submit.prevent="submitForm">
         <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                Username
-              </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="lucky.jesse"
-              />
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                Email address
-              </label>
-              <input
-                type="email"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="jesse@example.com"
-              />
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                First Name
-              </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Lucky"
-              />
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-              >
-                Last Name
-              </label>
-              <input
-                type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Jesse"
-              />
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-wrap">
-          <div class="w-full lg:w-12/12 px-4">
             <div class="relative w-full mb-3">
               <ShInput
                 type="text"
-                name="address"
+                name="name"
                 classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                label="Address"
+                label="Name"
                 class_label="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                sh_value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09"
               />
             </div>
           </div>
-          <div class="w-full lg:w-4/12 px-4">
+          <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                City
-              </label>
-              <input
-                type="email"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="New York"
-              />
-            </div>
-          </div>
-          <div class="w-full lg:w-4/12 px-4">
-            <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                Country
-              </label>
-              <input
+              <ShInput
                 type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="United States"
+                name="slug"
+                classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                label="slug"
+                class_label="block uppercase text-blueGray-600 text-xs font-bold mb-2"
               />
             </div>
           </div>
-          <div class="w-full lg:w-4/12 px-4">
+          <div class="w-full lg:w-6/12 px-4">
             <div class="relative w-full mb-3">
-              <label
-                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                htmlFor="grid-password"
-              >
-                Postal Code
-              </label>
-              <input
+              <ShInput
                 type="text"
-                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                value="Postal Code"
+                name="image"
+                classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                label="image"
+                class_label="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+              />
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 px-4">
+            <div class="relative w-full mb-3">
+              <ShSelect
+                name="parent_id"
+                classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                label="parent_id"
+                class_label="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                :selected-val="'laptop'"
+              >
+                <option v-for="option in parent_ids" :value="option.slug">{{ option.name }}</option>
+              </ShSelect>
+            </div>
+          </div>
+          <div class="w-full lg:w-12/12 px-4">
+            <div class="relative w-full mb-3">
+              <ShTextarea
+                name="desc"
+                classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                label="desc"
+                class_label="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                rows="4"
               />
             </div>
           </div>
         </div>
-        <div class="flex flex-wrap">
-          <div class="w-full lg:w-12/12 px-4">
-            <div class="relative w-full mb-3">
-<!--              <label-->
-<!--                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"-->
-<!--              >-->
-<!--                About me-->
-<!--              </label>-->
-<!--              <textarea-->
-<!--                type="text"-->
-<!--                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"-->
-<!--                rows="4"-->
-<!--              >-->
-<!--                    A beautiful UI Kit and Admin for VueJS & Tailwind CSS. It is Free-->
-<!--                    and Open Source.-->
-<!--                  </textarea-->
-<!--                  >-->
-              <ShTextarea
-                name="desc"
-                classes="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                rows="4"
-                sh_value="A beautiful UI Kit and Admin for VueJS & Tailwind CSS. It is Free and Open Source."
-              />
-            </div>
-          </div>
+        <div class="flex justify-end px-4">
+          <ShButton
+            classes="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+            type="submit"
+          >
+            Create
+          </ShButton>
         </div>
       </form>
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import ShInput from "@/components/Atoms/ShInput.vue";
-import ShTextarea from "@/components/Atoms/ShTextarea.vue";
-</script>

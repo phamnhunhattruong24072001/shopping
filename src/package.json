@@ -29,6 +29,8 @@
     },
     "dependencies": {
         "@types/axios": "^0.14.0",
+        "@vee-validate/i18n": "^4.11.7",
+        "@vee-validate/rules": "^4.11.7",
         "@vee-validate/yup": "^4.11.7",
         "@vuedx/typescript-plugin-vue": "^0.7.6",
         "chart.js": "^4.4.0",

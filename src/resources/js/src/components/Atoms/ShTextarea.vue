@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useField } from "~/vee-validate";
+import { useField } from "vee-validate";
 
 const props = defineProps({
   rows: {
     type: String,
-    default: 4,
+    default: '4',
   },
   cols: {
     type: String,
@@ -40,18 +40,21 @@ const props = defineProps({
   },
   class_label: {
     type: String,
-    required: false,
     default: "block uppercase text-blueGray-600 text-xs font-bold mb-2",
   },
   sh_value: {
     type: String,
     required: false,
-  }
+  },
 });
 
 const { value, errorMessage } = useField(() =>
   props.validate ? props.name : "",
 );
+
+if (props.sh_value) {
+  value.value = props.sh_value;
+}
 </script>
 
 <template>
@@ -67,7 +70,6 @@ const { value, errorMessage } = useField(() =>
     :readonly="readonly"
     v-model="value"
   >
-    {{ sh_value }}
   </textarea>
   <span class="text-red-500 pt-0.5 text-sm">{{ errorMessage }}</span>
 </template>
