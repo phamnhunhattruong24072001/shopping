@@ -30,10 +30,6 @@ export default [
       },
       {
         path: "category",
-        meta: {
-          title: "Categories",
-        },
-        component: () => import("@/views/admin/categories/Index.vue"),
         children: [
           {
             path: "",
