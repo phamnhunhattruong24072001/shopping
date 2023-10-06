@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import laravel from "laravel-vite-plugin";
 import vue from "@vitejs/plugin-vue";
 import Components from "unplugin-vue-components/vite";
+import i18nResources from "vite-plugin-i18n-resources";
+import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
@@ -17,6 +19,9 @@ export default defineConfig({
     Components({
       dirs: ["resources/js/src/components/"],
       extensions: ["vue"],
+    }),
+    i18nResources({
+      path: resolve(__dirname, "resources/js/src/locales"),
     }),
   ],
   resolve: {

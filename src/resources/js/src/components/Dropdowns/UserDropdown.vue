@@ -4,8 +4,10 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 import { AuthActionDispatchTypes as AuthActionTypes } from "@/store/modules/auth/types";
 import image from "@/assets/img/team-1-800x800.jpg";
+import languages from "@/libs/language"
 
 const store = useStore();
+const { languageUse, changeLanguage } = languages();
 const dropdownPopoverShow = ref<boolean>(false);
 const popoverDropdownRef = ref<HTMLElement | null>(null);
 const btnDropdownRef = ref<HTMLElement | null>(null);
@@ -24,6 +26,7 @@ const toggleDropdown = (e) => {
     });
   }
 };
+
 </script>
 
 <template>
@@ -67,10 +70,11 @@ const toggleDropdown = (e) => {
         Another action
       </a>
       <a
+        @click="changeLanguage"
         href="javascript:void(0);"
         class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
       >
-        Something else here
+        Change language ( used {{ languageUse }} )
       </a>
       <div class="h-0 my-2 border border-solid border-blueGray-100" />
       <span

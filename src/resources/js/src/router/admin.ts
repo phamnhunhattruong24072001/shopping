@@ -37,7 +37,8 @@ export default [
             meta: {
               title: "List Category",
             },
-            component: () => import("@/views/admin/categories/List.vue"),
+            component: () =>
+              import("@/views/admin/categories/ListCategory.vue"),
           },
           {
             path: "create",
@@ -45,7 +46,8 @@ export default [
             meta: {
               title: "Create Category",
             },
-            component: () => import("@/views/admin/categories/Create.vue"),
+            component: () =>
+              import("@/views/admin/categories/CreateCategory.vue"),
           },
         ],
       },
