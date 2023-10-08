@@ -30,9 +30,6 @@
       "@/*": [
         "/resources/js/src/*"
       ],
-      "~/*": [
-        "/node_modules/*"
-      ]
     }
   },
   "include": [

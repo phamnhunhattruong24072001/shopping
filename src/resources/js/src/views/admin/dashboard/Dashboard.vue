@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import category from "@/libs/category";
+import AdminHeader from "@/components/Headers/AdminHeader.vue";
 
 const { getAllCategory, categories } = category();
 
@@ -10,6 +11,7 @@ console.log(categories.value);
 
 <template>
   <div>
+    <AdminHeader/>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
         <CardPageVisits />
