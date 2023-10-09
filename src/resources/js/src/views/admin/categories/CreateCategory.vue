@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { useForm } from "vee-validate";
 import { schemaCategory } from "@/validations";
 import { CategoryForm } from "@/@types";
