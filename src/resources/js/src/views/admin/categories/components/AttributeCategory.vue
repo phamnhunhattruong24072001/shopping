@@ -61,10 +61,10 @@ const checkRemoveAttributeChild = (key) => {
       Attribute
     </h3>
     <div
-      class="content-attr w-full flex items-center flex-wrap"
+      class="content-attr w-full flex items-center flex-wrap mb-4"
       v-for="(item, index) in attributes"
     >
-      <div class="relative w-8/12 mb-3">
+      <div class="relative w-10/12 mb-3">
         <ShInput
           type="text"
           :name="`attributes[${index}].name`"
@@ -72,17 +72,8 @@ const checkRemoveAttributeChild = (key) => {
           :sh_value="item.name"
         />
       </div>
-      <div class="relative w-4/12 mb-3 pl-4">
-        <ShButton
-          classes="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
-          type="button"
-          @click="removeAttribute(index)"
-        >
-          delete
-        </ShButton>
-      </div>
       <div
-        class="attr-child w-full flex items-center gap-2"
+        class="attr-child w-full flex items-center gap-1"
         v-for="(attr, idx) in item.attr"
       >
         <div class="relative w-5/12 mb-3">
@@ -103,31 +94,47 @@ const checkRemoveAttributeChild = (key) => {
         </div>
         <div class="relative w-2/12 mb-3">
           <ShButton
-            classes="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+            classes="ml-3 bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
             type="button"
             @click="removeAttributeChild(index, idx)"
             :disabled="checkRemoveAttributeChild(index)"
           >
-            delete
+            <template v-slot:icon>
+              <i class="fa fa-minus-circle" aria-hidden="true"></i>
+            </template>
           </ShButton>
         </div>
       </div>
-      <div class="w-full flex justify-end">
+      <div class="w-full flex gap-2">
         <ShButton
           classes="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
           type="button"
+          @click="removeAttribute(index)"
+        >
+          <template v-slot:icon>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          </template>
+        </ShButton>
+        <ShButton
+          classes="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+          type="button"
           @click="addAttributeChild(index)"
         >
-          Add attribute child
+          <template v-slot:icon>
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+          </template>
         </ShButton>
       </div>
     </div>
     <ShButton
-      classes="bg-red-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
+      classes="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none ease-linear transition-all duration-150"
       type="button"
       @click="addAttribute"
     >
-      add attr
+      Add attribute
+      <template v-slot:icon>
+        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+      </template>
     </ShButton>
   </div>
 </template>
