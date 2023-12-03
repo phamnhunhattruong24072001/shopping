@@ -5,6 +5,7 @@
    - run            "composer i" or "composer u"
    - run            "cp .env.example .env"
    - run            "php artisan key:generate"
+   - run            "php artisan jwt:secret"
    - run            "docker exec -it vite_docker sh"
    - run            "npm i"
    - run            "npm run dev"

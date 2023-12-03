@@ -5,8 +5,6 @@ import AdminHeader from "@/components/Headers/AdminHeader.vue";
 const { getAllCategory, categories } = category();
 
 getAllCategory();
-
-console.log(categories.value);
 </script>
 
 <template>

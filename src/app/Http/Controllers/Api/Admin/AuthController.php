@@ -14,15 +14,19 @@ class AuthController extends Controller
     use ApiResponses;
 
     /**
+     * The function login admin api
+     *
      * @param LoginRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
+    public function login(LoginRequest $request)
     {
         $credentials = array_merge($request->only(['email', 'password']), ['status' => 1]);
+
         if (!$token = Auth::guard('apiAdmin')->attempt($credentials)) {
             return $this->errorResponse([], 'Login failed');
         }
+
         return $this->successResponse([
             'token' => $token,
             'user' => auth('apiAdmin')->user()
@@ -30,10 +34,12 @@ class AuthController extends Controller
     }
 
     /**
+     * The function register admin api
+     *
      * @param RegisterRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(RegisterRequest $request): \Illuminate\Http\JsonResponse
+    public function register(RegisterRequest $request)
     {
         if (!Admin::create($request->all())) {
             return $this->errorResponse([], 'Register failed');
