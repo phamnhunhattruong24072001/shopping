@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import adminRoutes from "./admin";
+import merchantRoutes from "./merchant";
 import clientRoutes from "./client";
 
 const routes: Array<RouteRecordRaw> = [
   ...clientRoutes,
-  ...adminRoutes,
+  ...merchantRoutes,
   {
     path: "/:pathMatch(.*)*",
     name: "404",
@@ -19,18 +19,18 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const isLoginAdmin = localStorage.getItem("admin_access_token");
+  const isLoginAdmin = localStorage.getItem("merchant_access_token");
   const isLoginClient = localStorage.getItem("access_token");
   const nameRouter = to.name;
-  if (to.path.includes("/admin") || to.path.includes("/admin/")) {
+  if (to.path.includes("/merchant") || to.path.includes("/merchant/")) {
     if (to.meta.requiresAuth && !isLoginAdmin) {
-      next({ name: "admin.login" });
+      next({ name: "merchant.login" });
     } else {
       if (
-        (nameRouter === "admin.login" || nameRouter === "admin.register") &&
+        (nameRouter === "merchant.login" || nameRouter === "merchant.register") &&
         isLoginAdmin
       ) {
-        next({ name: "admin" });
+        next({ name: "merchant" });
       } else {
         next();
       }

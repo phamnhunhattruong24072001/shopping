@@ -40,14 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admin',
+        ],
         'api' => [
           'driver' => 'jwt',
           'provider' => 'users',
           'hash' => false,
         ],
-        'apiAdmin' => [
+        'api_merchant' => [
             'driver' => 'jwt',
-            'provider' => 'admin',
+            'provider' => 'merchant',
             'hash' => false,
         ],
     ],
@@ -77,6 +81,10 @@ return [
         'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'merchant' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Merchant::class,
         ],
 
         // 'users' => [

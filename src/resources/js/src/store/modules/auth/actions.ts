@@ -30,8 +30,8 @@ export const actions: ActionTree<State, RootState> & Actions = {
       const data: any = await loginAdmin(formData);
       commit(AuthMutationTypes.SET_USER_ADMIN, data.user);
       commit(AuthMutationTypes.SET_IS_LOGIN_ADMIN, true);
-      localStorage.setItem("admin_access_token", data.token);
-      await router.push({ name: "admin.dashboard" });
+      localStorage.setItem("merchant_access_token", data.token);
+      await router.push({ name: "merchant.dashboard" });
     } catch (error) {
       commit(AuthMutationTypes.SET_MESSAGE, error.message);
       commit(AuthMutationTypes.SET_LOGIN_ADMIN_ERROR, true);
@@ -50,7 +50,7 @@ export const actions: ActionTree<State, RootState> & Actions = {
       commit(AuthMutationTypes.SET_IS_REGISTER_ADMIN, true);
       setTimeout(async () => {
         commit(AuthMutationTypes.SET_IS_REGISTER_ADMIN, false);
-        await router.push({ name: "admin.login" });
+        await router.push({ name: "merchant.login" });
       }, 2000);
     } catch (error) {
       commit(AuthMutationTypes.SET_MESSAGE, error.message);
@@ -63,7 +63,7 @@ export const actions: ActionTree<State, RootState> & Actions = {
   async [AuthActionTypes.LOGOUT_ADMIN]({ commit }): Promise<void> {
     commit(AuthMutationTypes.SET_USER_ADMIN, {});
     commit(AuthMutationTypes.SET_IS_LOGIN_ADMIN, false);
-    localStorage.removeItem("admin_access_token", "admin");
-    await router.push({ name: "admin.login" });
+    localStorage.removeItem("merchant_access_token", "admin");
+    await router.push({ name: "merchant.login" });
   },
 };

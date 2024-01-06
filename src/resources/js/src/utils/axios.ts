@@ -20,7 +20,7 @@ instance.interceptors.request.use((config) => {
   const requestUrl: string = config.url;
 
   if (requestUrl.includes("/admin/") && requestUrl) {
-    tokenKey = "admin_access_token";
+    tokenKey = "merchant_access_token";
   }
   const token = localStorage.getItem(tokenKey);
   if (token) {
