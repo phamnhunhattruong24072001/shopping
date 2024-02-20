@@ -16,4 +16,14 @@ class HomeController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    /**
+     * The function show common
+     *
+     * @return View
+     */
+    public function showCommon()
+    {
+        return view('admin.common');
+    }
 }
