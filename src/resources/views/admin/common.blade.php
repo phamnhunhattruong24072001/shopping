@@ -3,13 +3,41 @@
 @section('title', 'Common admin')
 
 @section('content')
+    @php
+        $options = [
+            'option 1',
+            'option 2',
+            'option 3',
+            'option 4',
+        ];
+    @endphp
     <div class="container-fluid pt-4">
-        <div class="row card">
-            <div class="col-6">
-                <h4>This is common input</h4>
-                <x-form-input title="Common input" type="text" name="common_input" class="form-control"></x-form-input>
-                <hr>
-                <h4>This is common select</h4>
+        <div class="card p-4">
+            <div class="row">
+                <div class="col-6">
+                    <h3 class="text-primary">Common input</h3>
+                    <x-admin.form-input for="input_one" name="input_one" title="Title common input"></x-admin.form-input>
+                </div>
+                <div class="col-6">
+                    <h3 class="text-primary">Common select single</h3>
+                    <x-admin.form-select for="select_one" name="select_one" title="Title common select single">
+                        @foreach($options as $item)
+                            <option value="{{ $item }}">{{ $item }}</option>
+                        @endforeach
+                    </x-admin.form-select>
+                </div>
+                <div class="col-6">
+                    <h3 class="text-primary">Common select multiple</h3>
+                    <x-admin.form-select for="select_multiple" name="select_multiple" title="Title common select multiple" multiple>
+                        @foreach($options as $item)
+                            <option value="{{ $item }}">{{ $item }}</option>
+                        @endforeach
+                    </x-admin.form-select>
+                </div>
+                <div class="col-6">
+                    <h3 class="text-primary">Common input tag</h3>
+                    <x-admin.form-input-tag for="input_tag" name="input_tag" title="Title common input tag" value="default 1, default 2, default 3"></x-admin.form-input-tag>
+                </div>
             </div>
         </div>
     </div>
