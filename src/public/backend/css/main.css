@@ -1,0 +1,14 @@
+.form-label {
+  display: block;
+}
+
+.bootstrap-tagsinput {
+  padding: 10px;
+}
+
+.bootstrap-tagsinput .tag {
+  margin-top: 5px;
+  background: #0c84ff;
+  color: #fff;
+  padding: 5px 10px;
+}

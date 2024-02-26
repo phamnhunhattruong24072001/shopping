@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\View\Components\Forms\Input;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -25,6 +24,6 @@ class ComponentServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::component('form-input', Input::class);
+        //
     }
 }
