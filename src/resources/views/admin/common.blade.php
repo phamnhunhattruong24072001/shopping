@@ -38,6 +38,15 @@
                     <h3 class="text-primary">Common input tag</h3>
                     <x-admin.form-input-tag for="input_tag" name="input_tag" title="Title common input tag" value="default 1, default 2, default 3"></x-admin.form-input-tag>
                 </div>
+                <div class="col-6">
+                    <h3 class="text-primary">Common input checkbox and radio</h3>
+                    <x-admin.form-input-check for="input_checkbox" name="input_checkbox" title="Title common input checkbox" value="1"></x-admin.form-input-check>
+                    <x-admin.form-input-check type="radio" for="input_checkbox" name="input_checkbox" title="Title common input radio" value="1"></x-admin.form-input-check>
+                </div>
+                <div class="col-6">
+                    <h3 class="text-primary">Common input switch</h3>
+                    <x-admin.form-switch for="input_switch" name="input_switch" title="Input switch" value="1"></x-admin.form-switch>
+                </div>
             </div>
         </div>
     </div>
