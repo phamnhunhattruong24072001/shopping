@@ -1,20 +1,18 @@
 <!doctype html>
 <html lang="en">
 @include('admin.layouts.head')
-<body class="hold-transition sidebar-mini">
-    <div class="wrapper">
-        @include('admin.layouts.navbar')
-        @include('admin.layouts.sidebar')
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            @include('admin.layouts.sidebar')
+            @include('admin.layouts.navbar')
 
-        <div class="content-wrapper">
-            <section class="content">
+            <div class="right_col" role="main">
                 @yield('content')
-            </section>
+            </div>
+
+            @include('admin.layouts.footer')
         </div>
-        <a id="back-to-top" href="#" class="btn btn-primary back-to-top" role="button" aria-label="Scroll to top">
-            <i class="fas fa-chevron-up"></i>
-        </a>
-        @include('admin.layouts.footer')
     </div>
 @include('admin.layouts.script')
 </body>
