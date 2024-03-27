@@ -9,9 +9,10 @@
 <div>
     <div class="form-group">
         <input
+            name="{{ $name }}"
             type="{{ $type }}"
             id="{{ $for }}"
-            {{ $attributes->merge(['class' => 'js-switch' . ($errors->has($name) ? 'is-invalid' : '')]) }}
+            {{ $attributes->merge(['class' => 'js-switch']) }}
             value="{{ $value }}"
         />
         {{ $title ?? '' }}
