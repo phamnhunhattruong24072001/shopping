@@ -10,6 +10,7 @@
     <div class="form-group">
         <label class="form-label-check" for="{{ $for }}">{{ $title }}</label>
         <input
+            name="{{ $name }}"
             type="{{ $type }}"
             id="{{ $for }}"
             {{ $attributes->merge(['class' => 'flat']) }}

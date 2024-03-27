@@ -10,9 +10,10 @@
     <div class="form-group">
         <label class="form-label" for="{{ $for }}">{{ $title }}</label>
         <input
+            name="{{ $name }}"
             type="{{ $type }}"
             id="{{ $for }}"
-            {{ $attributes->merge(['class' => 'boostrap-tag-input form-control' . ($errors->has($name) ? 'is-invalid' : '')]) }}
+            {{ $attributes->merge(['class' => 'boostrap-tag-input form-control' . ($errors->has($name) ? 'parsley-error' : '')]) }}
             value="{{ $value }}"
         />
         @error($name)
