@@ -18,12 +18,13 @@ abstract class BaseRepository implements RepositoryInterface
     /**
      * Set model
      */
-    public function setModel()
+    public function setModel(): void
     {
         $this->model = app()->make(
             $this->getModel()
         );
     }
+
     public function getAll()
     {
         return $this->model->all();
@@ -50,7 +51,7 @@ abstract class BaseRepository implements RepositoryInterface
         return false;
     }
 
-    public function delete($id)
+    public function delete($id): bool
     {
         $result = $this->find($id);
         if ($result) {
