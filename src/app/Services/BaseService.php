@@ -6,33 +6,13 @@ abstract class BaseService
 {
     protected $repository;
 
-    public function __construct()
-    {
-        $this->setRepository();
-    }
-
-    /**
-     * Get repository
-     */
-    abstract public function getRepository();
-
-    /**
-     * Set repository
-     */
-    public function setRepository()
-    {
-        $this->repository = app()->make(
-            $this->getRepository()
-        );
-    }
-
     /**
      * Create data
      *
      * @param $params
      * @return mixed
      */
-    public function createData($params)
+    public function create($params): mixed
     {
         return $this->repository->create($params);
     }
@@ -43,7 +23,7 @@ abstract class BaseService
      * @param $params
      * @return mixed
      */
-    public function updateData($params)
+    public function update($params): mixed
     {
         return $this->repository->update($params);
     }
@@ -55,7 +35,7 @@ abstract class BaseService
      * @param $params
      * @return mixed
      */
-    public function updateOrCreateData($condition, $params)
+    public function updateOrCreate($condition, $params): mixed
     {
         return $this->repository->updateOrCreate($condition, $params);
     }

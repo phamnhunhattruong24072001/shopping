@@ -1,0 +1,9 @@
+<?php
+
+namespace App\Services\{{servicePath}};
+
+use App\Services\BaseService;
+
+class {{serviceName}} extends BaseService
+{
+}

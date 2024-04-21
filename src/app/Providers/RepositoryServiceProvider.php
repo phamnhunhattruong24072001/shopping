@@ -13,7 +13,8 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(\App\Repositories\Interface\CategoryRepositoryInterface::class, \App\Repositories\Eloquent\CategoryRepository::class);
+        $this->app->singleton(\App\Repositories\Interfaces\CategoryRepositoryInterface::class, \App\Repositories\Entities\CategoryRepository::class);
+        $this->app->singleton(\App\Repositories\Interfaces\AdminRepositoryInterface::class, \App\Repositories\Entities\AdminRepository::class);
     }
 
     /**

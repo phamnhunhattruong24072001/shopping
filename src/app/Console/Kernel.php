@@ -9,7 +9,9 @@ class Kernel extends ConsoleKernel
 {
     protected $commands = [
         \App\Console\Commands\MakeRepository::class,
+        \App\Console\Commands\MakeService::class,
     ];
+
     /**
      * Define the application's command schedule.
      *

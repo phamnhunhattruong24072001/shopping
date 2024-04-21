@@ -49,12 +49,22 @@ class Merchant extends Authentication implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function getJWTIdentifier()
+    /**
+     * The function get JWT Identifier
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier(): mixed
     {
         return $this->getKey();
     }
 
-    public function getJWTCustomClaims()
+    /**
+     * The function get JWT custom claims
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims(): array
     {
         return [];
     }

@@ -26,13 +26,16 @@ class MakeRepository extends Command
      * Execute the console command.
      *
      * @return int
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     public function handle()
     {
         $name = $this->argument('name');
         $modelName = $this->option('class');
+        $modelName = Str::studly($modelName);
 
-        $repositoryName = Str::studly($name) . 'Repository';
+        $repositoryName = Str::afterLast($name, '/');
+        $repositoryName = Str::studly($repositoryName) . 'Repository';
         $repositoryInterfaceName = $repositoryName . 'Interface';
 
         $filesystem = new Filesystem();
@@ -45,20 +48,21 @@ class MakeRepository extends Command
             return Command::FAILURE;
         }
 
-        $stubRepository = $filesystem->get(__DIR__ . '/Stubs/repository.stub');
+        $stubRepository = $filesystem->get(__DIR__ . '/Stubs/Repositories/repository.stub');
         $stubRepository = str_replace('{{repositoryName}}', $repositoryName, $stubRepository);
         $stubRepository = str_replace('{{modelName}}', $modelName, $stubRepository);
 
         $filesystem->ensureDirectoryExists($basePath);
         $filesystem->put($filePathRepository, $stubRepository);
 
-        $stubInterface = $filesystem->get(__DIR__ . '/Stubs/repositoryInterface.stub');
-        $stubInterface = str_replace('{{repositoryName}}', $repositoryInterfaceName, $stubInterface);
+        $stubRepositoryInterface = $filesystem->get(__DIR__ . '/Stubs/Repositories/repositoryInterface.stub');
+        $stubRepositoryInterface = str_replace('{{repositoryName}}', $repositoryInterfaceName, $stubRepositoryInterface);
 
         $filesystem->ensureDirectoryExists($basePath);
-        $filesystem->put($filePathInterface, $stubInterface);
+        $filesystem->put($filePathInterface, $stubRepositoryInterface);
 
         $this->info('Repository created successfully!');
+
         return Command::SUCCESS;
     }
 }

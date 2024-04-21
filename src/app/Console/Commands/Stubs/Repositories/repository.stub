@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Repositories\Eloquent;
+namespace App\Repositories\Entities;
 
-use App\Repositories\Eloquent\BaseRepository;
-use App\Repositories\Interface\{{repositoryName}}Interface;
+use App\Repositories\Interfaces\{{repositoryName}}Interface;
 use App\Models\{{modelName}};
 
 class {{repositoryName}} extends BaseRepository implements {{repositoryName}}Interface
