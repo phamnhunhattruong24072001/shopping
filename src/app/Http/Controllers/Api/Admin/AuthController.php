@@ -31,15 +31,16 @@ class AuthController extends Controller
      */
     public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
-        $credentials = array_merge($request->only(['email', 'password']), ['status' => 1]);
-        if (!$token = Auth::guard('api_admin')->attempt($credentials)) {
-            return $this->errorResponse([], 'Login failed');
+        $credentials = array_merge($request->only(['email', 'password']), ['status' => config('common.status.active')]);
+        $token = Auth::guard('api_admin')->attempt($credentials);
+        if ($token) {
+            return $this->successResponse([
+                'token' => $token,
+                'admin' => auth('api_admin')->user()
+            ]);
         }
 
-        return $this->successResponse([
-            'token' => $token,
-            'admin' => auth('api_admin')->user()
-        ]);
+        return $this->errorResponse([], 'Login failed');
     }
 
     /**
@@ -55,7 +56,6 @@ class AuthController extends Controller
             return $this->successResponse([
                 'message' => 'Register success'
             ]);
-
         }
 
         return $this->errorResponse([], 'Register failed');

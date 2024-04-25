@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests\Api\Admin;
 
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Exceptions\HttpResponseException;
+use Symfony\Component\HttpFoundation\Response as ResponseStatus;
 
 class LoginRequest extends FormRequest
 {
@@ -30,9 +33,49 @@ class LoginRequest extends FormRequest
             ],
             'password' => [
                 'required',
-                'min:8',
-                'max:12',
             ],
         ];
+    }
+
+    /**
+     * Get attribute validation error
+     *
+     * @return array
+     */
+    public function attributes(): array
+    {
+        return [
+            'email' => __('common.fields.email'),
+            'password' => __('common.fields.password'),
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'email.required' => __('validation.required'),
+            'email.email' => __('validation.email'),
+            'password.required' => __('validation.required'),
+        ];
+    }
+
+    /**
+     * The function return failed message validation api
+     *
+     * @param Validator $validator
+     * @return mixed
+     */
+    protected function failedValidation(Validator $validator): mixed
+    {
+        throw new HttpResponseException(response()->json([
+            'status' => ResponseStatus::HTTP_BAD_REQUEST,
+            'message' => __('error.validation'),
+            'data' => $validator->errors()
+        ]));
     }
 }
