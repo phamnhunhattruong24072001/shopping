@@ -182,6 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Cartalyst\Stripe\Laravel\StripeServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -217,6 +218,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
       'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
       'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
+      'Stripe' => Cartalyst\Stripe\Laravel\Facades\Stripe::class,
     ])->toArray(),
 
 ];

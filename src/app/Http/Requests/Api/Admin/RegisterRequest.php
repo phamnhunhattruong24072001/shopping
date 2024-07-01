@@ -33,14 +33,14 @@ class RegisterRequest extends FormRequest
             ],
             'username' => [
                 'required',
-                'unique:admins',
+                'unique:admin',
                 'min:6',
                 'max:12'
             ],
             'email' => [
                 'required',
                 'email',
-                'unique:admins',
+                'unique:admin',
                 'max:50'
             ],
             'password' => [
@@ -74,19 +74,11 @@ class RegisterRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'full_name.required' => __('validation.required'),
-            'full_name.max' => __('validation.max.string'),
-            'username.required' => __('validation.required'),
-            'username.min' => __('validation.min.string'),
-            'username.max' => __('validation.max.string'),
-            'username.unique' => __('validation.unique'),
-            'email.required' => __('validation.required'),
-            'email.unique' => __('validation.unique'),
-            'email.email' => __('validation.email'),
-            'email.max' => __('validation.max'),
-            'password.required' => __('validation.required'),
-            'password.min' => __('validation.min'),
-            'password.max' => __('validation.max'),
+            '*.required' => __('validation.required'),
+            '*.max' => __('validation.max.string'),
+            '*.min' => __('validation.min.string'),
+            '*.unique' => __('validation.unique'),
+            '*.email' => __('validation.email'),
         ];
     }
 

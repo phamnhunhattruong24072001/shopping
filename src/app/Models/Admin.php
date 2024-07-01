@@ -11,7 +11,7 @@ class Admin extends Authentication implements JWTSubject
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'admins';
+    protected $table = 'admin';
 
     /**
      * The attributes that are mass assignable.
