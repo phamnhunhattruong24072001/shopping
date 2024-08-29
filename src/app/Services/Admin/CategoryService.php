@@ -14,4 +14,9 @@ class CategoryService extends BaseService
     {
         $this->repository = $categoryRepository;
     }
+
+    public function list()
+    {
+        return $this->repository->getAll();
+    }
 }

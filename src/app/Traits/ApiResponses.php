@@ -34,8 +34,9 @@ trait ApiResponses
     }
 
     $data = [
-      'message' => $message,
-      'errors' => $data,
+        'message' => $message,
+        'errors' => $data,
+        'code' => $statusCode
     ];
 
     return new JsonResponse($data, $statusCode);

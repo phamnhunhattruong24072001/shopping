@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminTableSeeder extends Seeder
 {
@@ -15,13 +16,24 @@ class AdminTableSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'name' => 'Supper Admin',
-            'email' => 'supperadmin@gmail.com',
-            'username' => 'supperadmin',
-            'status' => 1,
-            'role' => 0,
-            'password' => bcrypt('12345678')
+            [
+                'name' => 'Supper Admin',
+                'email' => 'supperadmin@gmail.com',
+                'username' => 'supperadmin',
+                'status' => 1,
+                'role' => 0,
+                'password' => Hash::make("12345678")
+            ],
+            [
+                'name' => 'Admin',
+                'email' => 'admin@gmail.com',
+                'username' => 'admin',
+                'status' => 1,
+                'role' => 1,
+                'password' => Hash::make("12345678")
+            ],
         ];
-        DB::table('admin')->insert($data);
+
+        DB::table('admins')->insert($data);
     }
 }

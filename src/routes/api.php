@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
 Route::fallback(function () {
   return response()->json([
     'message' => 'Page Not Found. If error persists, contact phamnhunhattruong@gmail.com'

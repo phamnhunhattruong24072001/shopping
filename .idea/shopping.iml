@@ -126,6 +126,17 @@
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/lcobucci/jwt" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/lcobucci/clock" />
       <excludeFolder url="file://$MODULE_DIR$/src/vendor/stella-maris/clock" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/masterminds/html5" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/moneyphp/money" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/sabberworm/php-css-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/stripe/stripe-php" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/laravel/cashier" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/symfony/polyfill-intl-icu" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/cartalyst/stripe-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/src/vendor/cartalyst/stripe" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

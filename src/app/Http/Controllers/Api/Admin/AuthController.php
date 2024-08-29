@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Admin\LoginRequest;
-use App\Http\Requests\Api\Admin\RegisterRequest;
 use App\Services\Admin\AdminService;
 use App\Traits\ApiResponses;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +20,7 @@ class AuthController extends Controller
     public function __construct(AdminService $adminService)
     {
         $this->adminService = $adminService;
+        $this->middleware('auth:apiAdmin', ['except' => ['login']]);
     }
 
     /**
@@ -32,32 +32,46 @@ class AuthController extends Controller
     public function login(LoginRequest $request): \Illuminate\Http\JsonResponse
     {
         $credentials = array_merge($request->only(['email', 'password']), ['status' => config('common.status.active')]);
-        $token = Auth::guard('api_admin')->attempt($credentials);
+        $token = Auth::guard('apiAdmin')->attempt($credentials);
         if ($token) {
-            return $this->successResponse([
-                'token' => $token,
-                'admin' => auth('api_admin')->user()
-            ]);
+            return $this->createNewToken($token);
         }
 
         return $this->errorResponse([], 'Login failed');
     }
 
     /**
-     * The function register admin api
+     * The function forgot password admin api
      *
-     * @param RegisterRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(RegisterRequest $request): \Illuminate\Http\JsonResponse
+    public function forgotPassword(): \Illuminate\Http\JsonResponse
     {
-        $created = $this->adminService->create($request->all());
-        if ($created) {
-            return $this->successResponse([
-                'message' => 'Register success'
-            ]);
-        }
+       return $this->errorResponse([], 'Forgot password');
+    }
 
-        return $this->errorResponse([], 'Register failed');
+    /**
+     * Refresh a token.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh() {
+        return $this->createNewToken(auth('apiAdmin')->refresh());
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function createNewToken($token){
+        return $this->successResponse([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('apiAdmin')->factory()->getTTL() * 60,
+            'user' =>auth('apiAdmin')->user()
+        ]);
     }
 }

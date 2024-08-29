@@ -200,7 +200,6 @@ return [
         /*
          * Custom Module Application Service
          */
-        Modules\ModuleServiceProvider::class,
     ],
 
     /*
