@@ -30,4 +30,12 @@ class CategoryController extends Controller
 
         return $this->successResponse(['data' => $categories]);
     }
+
+    function wrong_method_name( $arg1,$arg2 ){
+if($arg1>$arg2){
+echo"Arg1 is greater";
+}else{
+echo"Arg2 is greater";
+}
+}
 }
