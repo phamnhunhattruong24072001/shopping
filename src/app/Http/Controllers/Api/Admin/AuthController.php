@@ -74,4 +74,16 @@ class AuthController extends Controller
             'user' =>auth('apiAdmin')->user()
         ]);
     }
+
+    public function showProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('user.profile', ['user' => $user]);
+    }
+
+    public function showProfile( Request $request,$id ){
+$user=User::findOrFail($id);
+return view('user.profile',['user'=>$user]);
+}}
 }
