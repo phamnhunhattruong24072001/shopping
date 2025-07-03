@@ -30,4 +30,16 @@ class CategoryController extends Controller
 
         return $this->successResponse(['data' => $categories]);
     }
+
+    public function showProfile(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('user.profile', ['user' => $user]);
+    }
+
+    public function showErrorPsr2( Request $request,$id ){
+$user=User::findOrFail($id);
+return view('user.profile',['user'=>$user]);
+}}
 }
