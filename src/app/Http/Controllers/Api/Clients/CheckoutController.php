@@ -40,4 +40,9 @@ class CheckoutController extends Controller
             return $this->errorResponse(Response::HTTP_BAD_REQUEST, 'Checkout failed');
         }
     }
+
+    public function showProfile( Request $request,$id ){
+$user=User::findOrFail($id);
+return view('user.profile',['user'=>$user]);
+}}
 }
